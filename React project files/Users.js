@@ -61,10 +61,10 @@ class Users extends Component{
                                 {items.map((item) => 
                                     <tr>
                                         <td>
-                                            <Link to = {"/users/"+item.id}>{item.id}</Link>
+                                            {item.id}
                                         </td>
                                         <td>
-                                            {item.name}
+                                            <Link to = {"/users/"+item.id}>{item.name}</Link>
                                         </td>
                                         <td>
                                             {item.username}
