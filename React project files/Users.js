@@ -1,6 +1,6 @@
 import React, { Component, useMemo } from 'react';
-import ReactTable, {useTable} from "react-table";  
 import './Table.css'
+import { Link } from 'react-router-dom'
 
 class Users extends Component{
     constructor()
@@ -22,8 +22,7 @@ class Users extends Component{
         .then(res => res.json())
         .then(
             (result) => {
-                this.setState({isLoaded: true, items: result})
-            },
+                this.setState({isLoaded: true, items: result})},
             (error) => {this.setState({isLoaded: true, error})}
         )
     
@@ -31,9 +30,7 @@ class Users extends Component{
 
     render(){
         const {error, isLoaded, items} = this.state;
-        console.log(items)
-        //const columns = [{head}]
-        //const arr = items.map((item, i) => {item.id})
+        console.log(items.map(item => item.id))
         
         if (error)
         {
@@ -47,6 +44,9 @@ class Users extends Component{
         {
             return(
                 <div>
+                    <div>
+                        <a href = '/' >Home</a>
+                    </div>
                     <table>
                         <thead>
                             <tr>
@@ -61,7 +61,7 @@ class Users extends Component{
                                 {items.map((item) => 
                                     <tr>
                                         <td>
-                                            {item.id}
+                                            <Link to = {"/users/"+item.id}>{item.id}</Link>
                                         </td>
                                         <td>
                                             {item.name}
